@@ -1,10 +1,22 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, BarChart3, MessageSquare, Smartphone, Zap } from "lucide-react";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { ArrowRight, BarChart3, MessageSquare, Smartphone, Zap, Play } from "lucide-react";
+import { MessagingDemo } from "@/components/demos/messaging-demo";
+import { FirehoseDemo } from "@/components/demos/firehose-demo";
+import { AutoUIDemo } from "@/components/demos/autoui-demo";
+import { MobileBankingDemo } from "@/components/demos/mobile-banking-demo";
 
 const projectsData = [
   {
@@ -29,6 +41,8 @@ const projectsData = [
       "WebSockets",
     ],
     color: "cyan",
+    hasDemo: true,
+    demoComponent: MessagingDemo,
   },
   {
     id: "firehose",
@@ -52,6 +66,8 @@ const projectsData = [
       "Real-time Charts",
     ],
     color: "blue",
+    hasDemo: true,
+    demoComponent: FirehoseDemo,
   },
   {
     id: "autoui",
@@ -69,6 +85,8 @@ const projectsData = [
     ],
     tech: ["TypeScript", "React", "JSON Schema", "Angular", "React Native"],
     color: "violet",
+    hasDemo: true,
+    demoComponent: AutoUIDemo,
   },
   {
     id: "mobile-banking",
@@ -86,6 +104,8 @@ const projectsData = [
     ],
     tech: ["Ionic", "React", "Capacitor", "TypeScript", "Node.js"],
     color: "emerald",
+    hasDemo: true,
+    demoComponent: MobileBankingDemo,
   },
 ];
 
@@ -121,6 +141,8 @@ const cardVariants = {
 };
 
 export function Projects() {
+  const [openDemo, setOpenDemo] = useState<string | null>(null);
+
   return (
     <section id="projects" className="py-24">
       <div className="max-w-6xl mx-auto px-6">
@@ -209,17 +231,39 @@ export function Projects() {
                     ))}
                   </div>
 
-                  <Button
-                    variant="ghost"
-                    className="group-hover:text-primary transition-colors p-0 hover:bg-transparent"
-                  >
-                    <a
-                      href={`/projects/${project.id}`}
-                      className="flex items-center gap-2"
+                  <div className="flex items-center gap-4">
+                    {project.hasDemo && (
+                      <Dialog open={openDemo === project.id} onOpenChange={(open) => setOpenDemo(open ? project.id : null)}>
+                        <DialogTrigger asChild>
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            className="border-primary/50 hover:bg-primary/20"
+                          >
+                            <Play className="w-4 h-4 mr-1" />
+                            Demo
+                          </Button>
+                        </DialogTrigger>
+                        <DialogContent className="max-w-md">
+                          <DialogHeader>
+                            <DialogTitle>{project.title}</DialogTitle>
+                          </DialogHeader>
+                          <project.demoComponent />
+                        </DialogContent>
+                      </Dialog>
+                    )}
+                    <Button
+                      variant="ghost"
+                      className="group-hover:text-primary transition-colors p-0 hover:bg-transparent"
                     >
-                      View Case Study <ArrowRight className="w-4 h-4" />
-                    </a>
-                  </Button>
+                      <a
+                        href={`/projects/${project.id}`}
+                        className="flex items-center gap-2"
+                      >
+                        View Case Study <ArrowRight className="w-4 h-4" />
+                      </a>
+                    </Button>
+                  </div>
                 </CardContent>
               </Card>
             </motion.div>
