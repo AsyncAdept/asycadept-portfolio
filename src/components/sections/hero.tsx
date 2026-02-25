@@ -103,7 +103,7 @@ export function Hero() {
             <a href="#projects">View My Work</a>
           </Button>
           <Button variant="outline" size="lg" asChild>
-            <a href="/cv.pdf" target="_blank">
+            <a href="/cv" target="_blank">
               Download CV
             </a>
           </Button>

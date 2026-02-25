@@ -92,8 +92,8 @@ const commands: Record<string, React.ReactNode> = {
     <div className="space-y-2">
       <p className="text-cyan-400">Opening CV PDF...</p>
       <p className="text-sm text-muted-foreground">
-        <a href="/cv.pdf" className="underline" target="_blank">
-          /cv.pdf
+        <a href="/cv" className="underline" target="_blank">
+          /cv
         </a>
       </p>
     </div>
