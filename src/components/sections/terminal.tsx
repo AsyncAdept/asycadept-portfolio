@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Terminal as TerminalIcon, X, Minimize2, Maximize2 } from "lucide-react";
+import { Terminal as TerminalIcon, X, Minimize2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 
@@ -85,7 +85,7 @@ const commands: Record<string, React.ReactNode> = {
       <p className="text-muted-foreground">2. Real-Time Social Firehose</p>
       <p className="text-muted-foreground">3. AutoUI Generator</p>
       <p className="text-muted-foreground">4. Cross-Platform Mobile Banking</p>
-      <p className="text-cyan-400 mt-2">Type 'project &lt;id&gt;' for details</p>
+      <p className="text-cyan-400 mt-2">Type &apos;project &lt;id&gt;&apos; for details</p>
     </div>
   ),
   cv: (
@@ -182,7 +182,7 @@ export function Terminal() {
         {
           input,
           output: commands[cmd] || (
-            <p className="text-red-400">Command not found. Type 'help' for available commands.</p>
+            <p className="text-red-400">Command not found. Type &apos;help&apos; for available commands.</p>
           ),
         },
       ]);
