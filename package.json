@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "format": "prettier --write .",
+    "commit": "cz",
+    "push": "git push -u origin main"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
@@ -38,5 +41,10 @@
     "prettier": "^3.8.1",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
   }
 }
