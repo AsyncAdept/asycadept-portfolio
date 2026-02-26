@@ -1,15 +1,15 @@
-"use client";
+'use client';
 
-import { motion, Variants } from "framer-motion";
-import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { HeroBackground } from "./hero-background";
+import { motion, Variants } from 'framer-motion';
+import { ArrowDown, Github, Linkedin, Mail } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import { HeroBackground } from './hero-background';
 
 const socialLinks = [
-  { icon: Github, href: "https://github.com", label: "GitHub" },
-  { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
-  { icon: Mail, href: "mailto:contact@asycadept.com", label: "Email" },
+  { icon: Github, href: 'https://github.com', label: 'GitHub' },
+  { icon: Linkedin, href: 'https://linkedin.com', label: 'LinkedIn' },
+  { icon: Mail, href: 'mailto:contact@asycadept.com', label: 'Email' },
 ];
 
 const containerVariants: Variants = {
@@ -28,7 +28,7 @@ const itemVariants: Variants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: "easeOut" as const },
+    transition: { duration: 0.6, ease: 'easeOut' as const },
   },
 };
 
@@ -56,7 +56,7 @@ export function Hero() {
 
         <motion.h1
           variants={itemVariants}
-          className="text-5xl md:text-7xl font-bold mb-6"
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 tracking-tight"
         >
           <span className="text-foreground">Full Stack</span>
           <br />
@@ -65,17 +65,13 @@ export function Hero() {
 
         <motion.p
           variants={itemVariants}
-          className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto mb-8"
+          className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-xl mx-auto mb-8 leading-relaxed"
         >
-          Architecting production-grade web apps, mobile experiences, and
-          data-intensive platforms. React/Next.js &bull; React Native
-          &bull; Electron/Tauri
+          Architecting production-grade web apps, mobile experiences, and data-intensive platforms.
+          React/Next.js &bull; React Native &bull; Electron/Tauri
         </motion.p>
 
-        <motion.div
-          variants={itemVariants}
-          className="flex flex-wrap justify-center gap-4 mb-12"
-        >
+        <motion.div variants={itemVariants} className="flex flex-wrap justify-center gap-4 mb-12">
           {socialLinks.map((link) => (
             <Button
               key={link.label}
@@ -84,27 +80,25 @@ export function Hero() {
               asChild
               className="border-border hover:border-primary hover:text-primary transition-all"
             >
-              <a
-                href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={link.label}
-              >
+              <a href={link.href} target="_blank" rel="noopener noreferrer" aria-label={link.label}>
                 <link.icon className="w-5 h-5" />
               </a>
             </Button>
           ))}
         </motion.div>
 
-        <motion.div variants={itemVariants} className="flex justify-center gap-4">
+        <motion.div
+          variants={itemVariants}
+          className="flex flex-col sm:flex-row justify-center gap-4"
+        >
           <Button
             asChild
             size="lg"
-            className="bg-primary text-primary-foreground hover:bg-primary/90 glow-cyan"
+            className="bg-primary text-primary-foreground hover:bg-primary/90 glow-cyan w-full sm:w-auto"
           >
             <a href="#projects">View My Work</a>
           </Button>
-          <Button variant="outline" size="lg" asChild>
+          <Button variant="outline" size="lg" asChild className="w-full sm:w-auto">
             <a href="/cv" target="_blank">
               Download CV
             </a>
@@ -113,12 +107,9 @@ export function Hero() {
 
         <motion.div
           variants={itemVariants}
-          className="absolute bottom-10 left-1/2 -translate-x-1/2"
+          className="absolute bottom-10 left-1/2 -translate-x-1/2 hidden sm:block"
         >
-          <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{ repeat: Infinity, duration: 2 }}
-          >
+          <motion.div animate={{ y: [0, 10, 0] }} transition={{ repeat: Infinity, duration: 2 }}>
             <ArrowDown className="w-6 h-6 text-muted-foreground" />
           </motion.div>
         </motion.div>

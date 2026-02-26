@@ -1,32 +1,32 @@
-"use client";
+'use client';
 
-import Link from "next/link";
-import { Github, Linkedin, Mail, Terminal } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import Link from 'next/link';
+import { Github, Linkedin, Mail, Terminal } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 const socialLinks = [
-  { icon: Github, href: "https://github.com", label: "GitHub" },
-  { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
-  { icon: Mail, href: "mailto:contact@asycadept.com", label: "Email" },
+  { icon: Github, href: 'https://github.com', label: 'GitHub' },
+  { icon: Linkedin, href: 'https://linkedin.com', label: 'LinkedIn' },
+  { icon: Mail, href: 'mailto:contact@asycadept.com', label: 'Email' },
 ];
 
 const navLinks = [
-  { name: "About", href: "#about" },
-  { name: "Skills", href: "#skills" },
-  { name: "Projects", href: "#projects" },
-  { name: "Contact", href: "#contact" },
+  { name: 'About', href: '#about' },
+  { name: 'Skills', href: '#skills' },
+  { name: 'Projects', href: '#projects' },
+  { name: 'Contact', href: '#contact' },
 ];
 
 export function Footer() {
   return (
-    <footer className="py-12 border-t border-border">
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+    <footer className="py-8 sm:py-12 border-t border-border">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-4 sm:gap-6">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 flex items-center justify-center">
+            <div className="w-8 sm:w-10 h-8 sm:h-10 flex items-center justify-center">
               <svg
                 viewBox="0 0 40 40"
-                className="w-10 h-10"
+                className="w-8 h-8 sm:w-10 sm:h-10"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
               >
@@ -36,10 +36,7 @@ export function Footer() {
                   stroke="currentColor"
                   strokeWidth="2"
                 />
-                <path
-                  d="M20 12L30 32H10L20 12Z"
-                  fill="hsl(var(--background))"
-                />
+                <path d="M20 12L30 32H10L20 12Z" fill="hsl(var(--background))" />
                 <defs>
                   <linearGradient
                     id="footerGradient"
@@ -55,10 +52,10 @@ export function Footer() {
                 </defs>
               </svg>
             </div>
-            <span className="font-mono font-bold text-lg">AsycAdept</span>
+            <span className="font-mono font-bold text-base sm:text-lg">AsycAdept</span>
           </div>
 
-          <nav className="flex items-center gap-6">
+          <nav className="flex flex-wrap items-center justify-center gap-4 sm:gap-6">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
@@ -70,7 +67,7 @@ export function Footer() {
             ))}
           </nav>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3">
             {socialLinks.map((link) => (
               <Button
                 key={link.label}
@@ -85,16 +82,16 @@ export function Footer() {
                   rel="noopener noreferrer"
                   aria-label={link.label}
                 >
-                  <link.icon className="w-5 h-5" />
+                  <link.icon className="w-4 h-4 sm:w-5 sm:h-5" />
                 </a>
               </Button>
             ))}
           </div>
         </div>
 
-        <div className="mt-8 pt-8 border-t border-border flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
+        <div className="mt-6 sm:mt-8 pt-6 sm:pt-8 border-t border-border flex flex-col md:flex-row items-center justify-between gap-2 sm:gap-4 text-xs sm:text-sm text-muted-foreground">
           <div className="flex items-center gap-2">
-            <Terminal className="w-4 h-4" />
+            <Terminal className="w-3 h-3 sm:w-4 sm:h-4" />
             <span>Built with Next.js, TypeScript & Framer Motion</span>
           </div>
           <p>© {new Date().getFullYear()} AsycAdept. All rights reserved.</p>

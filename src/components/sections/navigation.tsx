@@ -1,16 +1,16 @@
-"use client";
+'use client';
 
-import { useState, useEffect } from "react";
-import Link from "next/link";
-import { motion } from "framer-motion";
-import { Menu, X } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { useState, useEffect } from 'react';
+import Link from 'next/link';
+import { motion } from 'framer-motion';
+import { Menu, X } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 const navItems = [
-  { name: "About", href: "#about" },
-  { name: "Skills", href: "#skills" },
-  { name: "Projects", href: "#projects" },
-  { name: "Contact", href: "#contact" },
+  { name: 'About', href: '#about' },
+  { name: 'Skills', href: '#skills' },
+  { name: 'Projects', href: '#projects' },
+  { name: 'Contact', href: '#contact' },
 ];
 
 export function Navigation() {
@@ -21,8 +21,8 @@ export function Navigation() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
@@ -30,17 +30,15 @@ export function Navigation() {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? "bg-background/80 backdrop-blur-md border-b border-border"
-          : "bg-transparent"
+        isScrolled ? 'bg-background/90 backdrop-blur-md border-b border-border' : 'bg-transparent'
       }`}
     >
-      <nav className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <nav className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2">
-          <div className="w-10 h-10 flex items-center justify-center">
+          <div className="w-8 sm:w-10 h-8 sm:h-10 flex items-center justify-center">
             <svg
               viewBox="0 0 40 40"
-              className="w-10 h-10"
+              className="w-8 h-8 sm:w-10 sm:h-10"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
@@ -50,10 +48,7 @@ export function Navigation() {
                 stroke="currentColor"
                 strokeWidth="2"
               />
-              <path
-                d="M20 12L30 32H10L20 12Z"
-                fill="hsl(var(--background))"
-              />
+              <path d="M20 12L30 32H10L20 12Z" fill="hsl(var(--background))" />
               <defs>
                 <linearGradient
                   id="gradient"
@@ -69,10 +64,10 @@ export function Navigation() {
               </defs>
             </svg>
           </div>
-          <span className="font-mono font-bold text-xl">AsycAdept</span>
+          <span className="font-mono font-bold text-lg sm:text-xl">AsycAdept</span>
         </Link>
 
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-6 lg:gap-8">
           {navItems.map((item) => (
             <Link
               key={item.name}
@@ -91,10 +86,11 @@ export function Navigation() {
         </div>
 
         <button
-          className="md:hidden"
+          className="md:hidden p-2"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          aria-label="Toggle menu"
         >
-          {isMobileMenuOpen ? <X /> : <Menu />}
+          {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
       </nav>
 
@@ -102,23 +98,20 @@ export function Navigation() {
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="md:hidden bg-background border-b border-border"
+          className="md:hidden bg-background/95 backdrop-blur-md border-b border-border"
         >
-          <div className="flex flex-col p-6 gap-4">
+          <div className="flex flex-col p-4 gap-4">
             {navItems.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
-                className="text-muted-foreground hover:text-primary transition-colors font-mono"
+                className="text-muted-foreground hover:text-primary transition-colors font-mono py-2"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {item.name}
               </Link>
             ))}
-            <Button
-              asChild
-              className="bg-primary text-primary-foreground hover:bg-primary/90"
-            >
+            <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90">
               <a href="#contact" onClick={() => setIsMobileMenuOpen(false)}>
                 Let&apos;s Talk
               </a>
